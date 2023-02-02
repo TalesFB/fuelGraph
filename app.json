@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "fuelGraph",
+    "slug": "fuelGraph",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
