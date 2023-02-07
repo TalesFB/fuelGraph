@@ -8,6 +8,7 @@ import {
   TextInput,
   SafeAreaView,
   TouchableOpacity,
+  KeyboardAvoidingView,
 } from "react-native";
 
 export default function App() {
@@ -15,21 +16,30 @@ export default function App() {
   console.log(plate);
   return (
     <View style={styles.container}>
-      <StatusBar style="light" />
-      <Image source={require("./assets/logo.png")} />
-      <Text style={styles.textLogin}>Olá, seja bem vindo(a) ao FUEL GRAPH</Text>
-      <SafeAreaView>
-        <Text style={styles.label}>Placa do veículo</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Insira a placa do veículo"
-          placeholderTextColor={"#7E7E7E"}
-          onChangeText={(text) => setPlate(text)}
-        />
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.textButton}>Entrar</Text>
-        </TouchableOpacity>
-      </SafeAreaView>
+      <KeyboardAvoidingView
+        contentContainerStyle={styles.imageLogin}
+        behavior="position"
+        enabled
+      >
+        <StatusBar style="light" />
+        <Image source={require("./assets/logo.png")} />
+        <Text style={styles.textLogin}>
+          Olá, seja bem vindo(a) ao FUEL GRAPH
+        </Text>
+        <SafeAreaView>
+          <Text style={styles.label}>Placa do veículo</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Insira a placa do veículo"
+            placeholderTextColor={"#7E7E7E"}
+            onChangeText={(text) => setPlate(text)}
+          />
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.textButton}>Entrar</Text>
+          </TouchableOpacity>
+        </SafeAreaView>
+      </KeyboardAvoidingView>
+
       <SafeAreaView style={styles.footerLogin}>
         <Text style={styles.developer}>Desenvolvido por: Tales Ferreira</Text>
         <Text style={styles.rights}>2023 - Todos os Direitos Reservados</Text>
@@ -45,6 +55,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#161616",
     alignItems: "center",
     justifyContent: "center",
+  },
+  imageLogin: {
+    display: "flex",
+    alignItems: "center",
+    paddingTop: 10,
   },
   textLogin: {
     fontSize: 15,
