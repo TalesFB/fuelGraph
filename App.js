@@ -9,43 +9,47 @@ import {
   SafeAreaView,
   TouchableOpacity,
   KeyboardAvoidingView,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from "react-native";
 
 export default function App() {
   const [plate, setPlate] = useState("");
   console.log(plate);
   return (
-    <View style={styles.container}>
-      <KeyboardAvoidingView
-        contentContainerStyle={styles.imageLogin}
-        behavior="position"
-        enabled
-      >
-        <StatusBar style="light" />
-        <Image source={require("./assets/logo.png")} />
-        <Text style={styles.textLogin}>
-          Olá, seja bem vindo(a) ao FUEL GRAPH
-        </Text>
-        <SafeAreaView>
-          <Text style={styles.label}>Placa do veículo</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Insira a placa do veículo"
-            placeholderTextColor={"#7E7E7E"}
-            onChangeText={(text) => setPlate(text)}
-          />
-          <TouchableOpacity style={styles.button}>
-            <Text style={styles.textButton}>Entrar</Text>
-          </TouchableOpacity>
-        </SafeAreaView>
-      </KeyboardAvoidingView>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+      <View style={styles.container}>
+        <KeyboardAvoidingView
+          contentContainerStyle={styles.imageLogin}
+          behavior="position"
+          enabled
+        >
+          <StatusBar style="light" />
+          <Image source={require("./assets/logo.png")} />
+          <Text style={styles.textLogin}>
+            Olá, seja bem vindo(a) ao FUEL GRAPH
+          </Text>
+          <SafeAreaView>
+            <Text style={styles.label}>Placa do veículo</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Insira a placa do veículo"
+              placeholderTextColor={"#7E7E7E"}
+              onChangeText={(text) => setPlate(text)}
+            />
+            <TouchableOpacity style={styles.button}>
+              <Text style={styles.textButton}>Entrar</Text>
+            </TouchableOpacity>
+          </SafeAreaView>
+        </KeyboardAvoidingView>
 
-      <SafeAreaView style={styles.footerLogin}>
-        <Text style={styles.developer}>Desenvolvido por: Tales Ferreira</Text>
-        <Text style={styles.rights}>2023 - Todos os Direitos Reservados</Text>
-        <Text style={styles.version}>Versão 1.0.1</Text>
-      </SafeAreaView>
-    </View>
+        <SafeAreaView style={styles.footerLogin}>
+          <Text style={styles.developer}>Desenvolvido por: Tales Ferreira</Text>
+          <Text style={styles.rights}>2023 - Todos os Direitos Reservados</Text>
+          <Text style={styles.version}>Versão 1.0.1</Text>
+        </SafeAreaView>
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
 
@@ -74,6 +78,7 @@ const styles = StyleSheet.create({
     marginBottom: -7,
   },
   input: {
+    color: "white",
     height: 40,
     margin: 12,
     borderWidth: 0,
@@ -110,16 +115,16 @@ const styles = StyleSheet.create({
   },
   developer: {
     color: "#FFFFFF",
-    fontSize: 15,
+    fontSize: 12,
     fontWeight: "500",
     marginBottom: 5,
   },
   rights: {
     color: "#ABABAB",
-    fontSize: 14,
+    fontSize: 10,
   },
   version: {
     color: "#ABABAB",
-    fontSize: 14,
+    fontSize: 10,
   },
 });
